@@ -15,12 +15,10 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.springframework.data.redis.connection.convert.ListConverter;
 import org.springframework.http.HttpMethod;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
@@ -34,7 +32,6 @@ import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 import static com.github.pokemon.user.center.pojo.common.TableName.SYSTEM_RESOURCE;
 
@@ -51,7 +48,7 @@ import static com.github.pokemon.user.center.pojo.common.TableName.SYSTEM_RESOUR
 @Getter
 @Setter
 @Builder
-@ToString(exclude = {"childResources","parentResource","roles"})
+@ToString(exclude = {"childResources", "parentResource", "roles"})
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor

@@ -39,14 +39,14 @@ public interface ISystemRoleService<T extends ISimpleRoleVO, E> {
      *
      * @param role 用户信息
      */
-    void updateRole(E role);
+    void updateRole(SystemRoleDO oldData, E role);
 
     /**
      * 根据ID删除用户
      *
-     * @param roleId 用户信息
+     * @param role 用户信息
      */
-    void deleteRoleById(long roleId);
+    void deleteRoleById(SystemRoleDO role);
 
 
 }

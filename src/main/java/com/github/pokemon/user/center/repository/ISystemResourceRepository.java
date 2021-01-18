@@ -20,7 +20,7 @@ import java.util.Optional;
  * @since 0.0.1
  */
 
-public interface ISystemResourceRepository extends JpaSpecificationExecutor<SystemResourceDO>, JpaRepository<SystemResourceDO, Long>, QuerydslPredicateExecutor<SystemResourceDO> {
+public interface ISystemResourceRepository extends JpaSpecificationExecutor<SystemResourceDO>, JpaRepository<SystemResourceDO, Long> {
 
     /**
      * 根据资源编码判断资源是否存在

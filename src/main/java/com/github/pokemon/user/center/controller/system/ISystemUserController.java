@@ -42,7 +42,7 @@ public interface ISystemUserController<T extends ISimpleUserVO, E> {
      * @return ResultVO
      */
     @Module(resourceName = "创建用户", resourceNote = "创建用户", resourceCode = "manager_user_post", parentCode = "manager_user", priority = 2)
-    ResultVO<T> createUser(E user);
+    ResultVO<Void> createUser(E user);
 
 
     /**
@@ -52,7 +52,7 @@ public interface ISystemUserController<T extends ISimpleUserVO, E> {
      * @return ResultVO
      */
     @Module(resourceName = "更新用户", resourceNote = "更新用户", resourceCode = "manager_user_put", parentCode = "manager_user", priority = 3)
-    ResultVO<T> updateUser(E user);
+    ResultVO<Void> updateUser(SystemUserDO userInfo, E user);
 
     /**
      * 根据用户的 ID 删除用户

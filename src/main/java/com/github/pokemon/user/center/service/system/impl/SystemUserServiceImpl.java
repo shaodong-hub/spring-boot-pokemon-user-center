@@ -1,5 +1,6 @@
 package com.github.pokemon.user.center.service.system.impl;
 
+import com.github.pokemon.user.center.pojo.dto.SimpleUserDTO;
 import com.github.pokemon.user.center.pojo.dto.SystemUserQueryDTO;
 import com.github.pokemon.user.center.pojo.entity.SystemUserDO;
 import com.github.pokemon.user.center.pojo.vo.ISimpleUserVO;
@@ -7,6 +8,7 @@ import com.github.pokemon.user.center.repository.ISystemUserRepository;
 import com.github.pokemon.user.center.service.system.ISystemUserService;
 import com.google.common.collect.Lists;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,7 +23,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- * TODO
+ * 用户管理服务
  * <p>
  * create in 2021/1/14 9:13 上午
  *
@@ -29,6 +31,7 @@ import java.util.List;
  * @version 0.0.1
  */
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class SystemUserServiceImpl implements ISystemUserService<ISimpleUserVO> {
@@ -38,6 +41,22 @@ public class SystemUserServiceImpl implements ISystemUserService<ISimpleUserVO> 
     @Override
     public Page<SystemUserDO> listUsers(SystemUserQueryDTO condition, Pageable pageable) {
         return repository.findAll(specification(condition), pageable);
+    }
+
+    @Override
+    public void createUser(SimpleUserDTO user) {
+        repository.save(user.toSystemUser());
+    }
+
+    @Override
+    public void updateUser(SystemUserDO oldData, SimpleUserDTO newData) {
+
+    }
+
+    @Override
+    public void deleteUser(SystemUserDO user) {
+        log.info("删除用户 - {}", user.toString());
+        repository.delete(user);
     }
 
     /**

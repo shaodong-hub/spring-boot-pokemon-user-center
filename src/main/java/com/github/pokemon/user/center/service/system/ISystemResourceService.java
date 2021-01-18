@@ -1,5 +1,7 @@
 package com.github.pokemon.user.center.service.system;
 
+import com.github.pokemon.user.center.pojo.dto.SimpleResourceDTO;
+import com.github.pokemon.user.center.pojo.entity.SystemResourceDO;
 import com.github.pokemon.user.center.pojo.vo.IAntPathRequestMatcherVO;
 import com.github.pokemon.user.center.pojo.vo.ISimpleResourceVO;
 
@@ -25,6 +27,8 @@ public interface ISystemResourceService {
      * @return List
      */
     List<ISimpleResourceVO> listChildResource(long resourceId);
+
+    void updateResource(SystemResourceDO oldData, SimpleResourceDTO newData);
 
     /**
      * 查找所有的匹配器

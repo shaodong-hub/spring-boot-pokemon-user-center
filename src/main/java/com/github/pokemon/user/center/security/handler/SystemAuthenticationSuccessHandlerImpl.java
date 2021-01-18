@@ -37,7 +37,7 @@ public class SystemAuthenticationSuccessHandlerImpl implements AuthenticationSuc
         log.info("-------------------- 登录成功 --------------------");
         httpServletResponse.setContentType("application/json;charset=UTF-8");
         httpServletResponse.getWriter().write("success!");
-        String targetUrl = httpServletRequest.getRequestURI();
-        STRATEGY.sendRedirect(httpServletRequest, httpServletResponse, targetUrl);
+//        String targetUrl = httpServletRequest.getRequestURI();
+//        STRATEGY.sendRedirect(httpServletRequest, httpServletResponse, targetUrl);
     }
 }

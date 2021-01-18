@@ -1,8 +1,13 @@
 package com.github.pokemon.user.center.pojo.vo;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.http.HttpMethod;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 
@@ -17,7 +22,8 @@ import java.util.Collection;
 
 @SuppressWarnings("unused")
 @JsonPropertyOrder({"id", "resourceName", "resourceCode", "urls", "methods", "priority", "icon", "foreignKeyParentResourceId"})
-public interface ISimpleResourceVO {
+@JsonDeserialize(as = ISimpleUserVO.SimpleUserVO.class)
+public interface ISimpleResourceVO extends Serializable {
 
     /**
      * 获取对应的 ID
@@ -74,5 +80,31 @@ public interface ISimpleResourceVO {
      * @return Long
      */
     Long getForeignKeyParentResourceId();
+
+    @Getter
+    @Setter
+    @ToString
+    class SimpleResourceVO implements ISimpleResourceVO {
+
+        private static final long serialVersionUID = 3518269634500764364L;
+
+        private Long id;
+
+        private String resourceName;
+
+        private Collection<String> urls;
+
+        private Collection<HttpMethod> methods;
+
+        private String resourceCode;
+
+        private Integer priority;
+
+        private String icon;
+
+        private Long foreignKeyParentResourceId;
+
+
+    }
 
 }

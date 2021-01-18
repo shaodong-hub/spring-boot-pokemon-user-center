@@ -47,15 +47,15 @@ public interface ISystemRoleController<T extends ISimpleRoleVO, E> {
      * @return SystemRoleVO
      */
     @Module(resourceName = "更新角色", resourceNote = "更新角色", resourceCode = "manager_role_put", parentCode = "manager_role", priority = 3)
-    ResultVO<Void> updateRole(E role);
+    ResultVO<Void> updateRole(SystemRoleDO oldData, E role);
 
     /**
      * 根据ID删除用户
      *
-     * @param roleId 用户信息
+     * @param role 用户信息
      * @return Void
      */
     @Module(resourceName = "删除角色", resourceNote = "删除角色", resourceCode = "manager_role_delete", parentCode = "manager_role", priority = 4)
-    ResultVO<Void> deleteRoleById(Long roleId);
+    ResultVO<Void> deleteRoleById(SystemRoleDO role);
 
 }

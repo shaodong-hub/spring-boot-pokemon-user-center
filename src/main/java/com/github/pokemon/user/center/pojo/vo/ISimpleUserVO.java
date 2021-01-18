@@ -1,5 +1,11 @@
 package com.github.pokemon.user.center.pojo.vo;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +18,9 @@ import java.util.List;
  */
 
 @SuppressWarnings("unused")
-public interface ISimpleUserVO {
+@JsonDeserialize(as = ISimpleUserVO.SimpleUserVO.class)
+public interface ISimpleUserVO extends Serializable {
+
 
     /**
      * getUsername
@@ -41,5 +49,24 @@ public interface ISimpleUserVO {
      * @return List
      */
     List<ISimpleRoleVO> getRoles();
+
+    @Getter
+    @Setter
+    @ToString
+    class SimpleUserVO implements ISimpleUserVO {
+
+        private static final long serialVersionUID = -3103630728664723533L;
+
+        private String username;
+
+        private String phone;
+
+        private String password;
+
+        private String email;
+
+        private List<ISimpleRoleVO> roles;
+
+    }
 
 }

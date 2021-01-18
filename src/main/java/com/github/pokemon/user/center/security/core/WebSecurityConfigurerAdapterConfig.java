@@ -83,7 +83,9 @@ public class WebSecurityConfigurerAdapterConfig extends WebSecurityConfigurerAda
                 .logoutSuccessHandler(logoutSuccessHandler);
         // 所有的接口均需认证后才能访问
         // 配置自定义决策器，url 数据源
-        http.authorizeRequests().anyRequest().authenticated().withObjectPostProcessor(getObjectPostProcessor());
+        http.authorizeRequests().anyRequest().authenticated()
+                .withObjectPostProcessor(getObjectPostProcessor())
+        ;
         // 对 Session 的管理
         http.sessionManagement()
                 // 登录超时处理

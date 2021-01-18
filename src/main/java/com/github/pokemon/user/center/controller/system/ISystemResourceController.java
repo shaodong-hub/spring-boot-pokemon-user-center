@@ -1,6 +1,8 @@
 package com.github.pokemon.user.center.controller.system;
 
 import com.github.pokemon.common.support.pojo.vo.ResultVO;
+import com.github.pokemon.user.center.pojo.dto.SimpleResourceDTO;
+import com.github.pokemon.user.center.pojo.entity.SystemResourceDO;
 import com.github.pokemon.user.center.pojo.vo.ISimpleResourceVO;
 import com.github.pokemon.user.center.security.resource.Module;
 
@@ -28,6 +30,6 @@ public interface ISystemResourceController<V extends ISimpleResourceVO> {
      * @return Void
      */
     @Module(resourceName = "更新资源", resourceNote = "更新资源", resourceCode = "manager_resource_put", parentCode = "manager_resource", priority = 2)
-    ResultVO<Void> updateResource();
+    ResultVO<Void> updateResource(SystemResourceDO oldData, SimpleResourceDTO newData);
 
 }

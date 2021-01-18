@@ -25,7 +25,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import java.util.List;
-import java.util.Set;
 
 import static com.github.pokemon.user.center.pojo.common.TableName.SYSTEM_ROLE;
 import static com.github.pokemon.user.center.pojo.common.TableName.SYSTEM_ROLE_RESOURCE;
@@ -45,7 +44,7 @@ import static com.github.pokemon.user.center.pojo.common.TableName.SYSTEM_ROLE_R
 @Getter
 @Setter
 @Builder
-@ToString(exclude = {"users","resources"})
+@ToString(exclude = {"users", "resources"})
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)

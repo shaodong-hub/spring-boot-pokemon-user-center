@@ -6,8 +6,6 @@ import com.github.pokemon.user.center.pojo.dto.SimpleUserDTO;
 import com.github.pokemon.user.center.pojo.dto.SystemUserQueryDTO;
 import com.github.pokemon.user.center.pojo.entity.SystemUserDO;
 import com.github.pokemon.user.center.pojo.vo.ISimpleUserVO;
-import com.github.pokemon.user.center.security.resource.Module;
-import com.github.pokemon.user.center.security.resource.Menu;
 import com.github.pokemon.user.center.service.system.ISystemUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -48,19 +47,23 @@ public class SystemUserControllerImpl implements ISystemUserController<ISimpleUs
 
     @PostMapping("user")
     @Override
-    public ResultVO<ISimpleUserVO> createUser(SimpleUserDTO user) {
-        return null;
+    public ResultVO<Void> createUser(@RequestBody SimpleUserDTO user) {
+        service.createUser(user);
+        return ResultVO.success();
     }
 
-    @PutMapping("user")
+    @PutMapping("user/{id}")
     @Override
-    public ResultVO<ISimpleUserVO> updateUser(SimpleUserDTO user) {
-        return null;
+    public ResultVO<Void> updateUser(@PathVariable("id") SystemUserDO oldData, @RequestBody SimpleUserDTO newData) {
+        service.updateUser(oldData, newData);
+        return ResultVO.success();
     }
 
     @DeleteMapping("/user/{id}")
     @Override
     public ResultVO<Void> deleteUserById(@PathVariable("id") SystemUserDO user) {
-        return null;
+        service.deleteUser(user);
+        return ResultVO.success();
     }
+
 }

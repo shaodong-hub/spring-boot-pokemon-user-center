@@ -8,6 +8,7 @@ import com.github.pokemon.user.center.repository.ISystemRoleRepository;
 import com.github.pokemon.user.center.service.system.ISystemRoleService;
 import com.google.common.collect.Lists;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,7 +29,7 @@ import java.util.List;
  * @version 0.0.1
  */
 
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class SystemRoleServiceImpl implements ISystemRoleService<ISimpleRoleVO, SimpleRoleDTO> {
@@ -42,17 +43,18 @@ public class SystemRoleServiceImpl implements ISystemRoleService<ISimpleRoleVO, 
 
     @Override
     public void createRole(SimpleRoleDTO role) {
+        repository.save(role.toSimpleRole());
+    }
+
+    @Override
+    public void updateRole(SystemRoleDO oldData, SimpleRoleDTO role) {
 
     }
 
     @Override
-    public void updateRole(SimpleRoleDTO role) {
-
-    }
-
-    @Override
-    public void deleteRoleById(long roleId) {
-
+    public void deleteRoleById(SystemRoleDO role) {
+        log.info("删除角色 - {}", role);
+        repository.delete(role);
     }
 
     /**

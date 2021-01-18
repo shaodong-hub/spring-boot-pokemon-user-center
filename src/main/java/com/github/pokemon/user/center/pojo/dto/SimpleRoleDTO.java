@@ -1,7 +1,9 @@
 package com.github.pokemon.user.center.pojo.dto;
 
+import com.github.pokemon.user.center.pojo.entity.SystemRoleDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.beans.BeanUtils;
 
 /**
  * TODO
@@ -15,4 +17,15 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class SimpleRoleDTO {
+
+    private String roleName;
+
+    private String authority;
+
+    public SystemRoleDO toSimpleRole() {
+        SystemRoleDO user = new SystemRoleDO();
+        BeanUtils.copyProperties(user, this);
+        return user;
+    }
+
 }

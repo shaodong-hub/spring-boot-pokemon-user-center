@@ -1,5 +1,6 @@
 package com.github.pokemon.user.center.service.system;
 
+import com.github.pokemon.user.center.pojo.dto.SimpleUserDTO;
 import com.github.pokemon.user.center.pojo.dto.SystemUserQueryDTO;
 import com.github.pokemon.user.center.pojo.entity.SystemUserDO;
 import com.github.pokemon.user.center.pojo.vo.ISimpleUserVO;
@@ -26,5 +27,27 @@ public interface ISystemUserService<T extends ISimpleUserVO> {
      * @return Page
      */
     Page<SystemUserDO> listUsers(SystemUserQueryDTO condition, Pageable pageable);
+
+    /**
+     * 创建用户服务
+     *
+     * @param user 用户信息
+     */
+    void createUser(SimpleUserDTO user);
+
+    /**
+     * 更新用户信息
+     *
+     * @param oldData 待更新的用户信息
+     * @param newData 要更新的用户信息
+     */
+    void updateUser(SystemUserDO oldData, SimpleUserDTO newData);
+
+    /**
+     * 删除用户信息
+     *
+     * @param user 用户信息
+     */
+    void deleteUser(SystemUserDO user);
 
 }
